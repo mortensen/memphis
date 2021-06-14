@@ -1,0 +1,31 @@
+NamedQueries:
+
+über die Klasse annotieren als:
+//@NamedQueries(value = {
+//		@NamedQuery(name = "findByAuthorization", query = "SELECT u FROM User u WHERE u.name = :name AND u.password = :password"),
+//		@NamedQuery(name = "findByFriendship", query = "SELECT u FROM User u INNER JOIN u.friendships f WHERE f.friend.name = :name OR f.user.name = :name") })
+
+
+ManyToMany:
+
+//	@ManyToMany(cascade = CascadeType.PERSIST, fetch = FetchType.EAGER)
+//	private List<UserGroup> userGroups = new ArrayList<UserGroup>();
+
+
+Dokumente persistieren:
+
+// @Lob
+// private byte[] avatar;
+
+
+Datum persistieren:
+
+// @Temporal(TemporalType.DATE)
+// private Date registrationDate;
+
+
+Enums:
+
+//public enum ObjectType {
+//USER, ADDRESS
+//}

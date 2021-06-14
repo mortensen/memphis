@@ -1,0 +1,60 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>de.mortensenit</groupId>
+		<artifactId>memphis</artifactId>
+		<version>0.0.1-SNAPSHOT</version>
+		<relativePath>../memphis/pom.xml</relativePath>
+	</parent>
+	<artifactId>memphis-ear</artifactId>
+	<packaging>ear</packaging>
+
+	<dependencies>
+		<dependency>
+			<groupId>de.mortensenit</groupId>
+			<artifactId>memphis-ejb</artifactId>
+			<version>${memphisVersion}</version>
+			<type>ejb</type>
+		</dependency>
+		<dependency>
+			<groupId>de.mortensenit</groupId>
+			<artifactId>memphis-web</artifactId>
+			<version>${memphisVersion}</version>
+			<type>war</type>
+		</dependency>
+	</dependencies>
+
+	<!-- Maven goals: clean compile ear:generate-application-xml ear:ear -->
+	<!-- Used for building ear with additional libraries like utils -->
+	<build>
+		<finalName>memphis</finalName>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-ear-plugin</artifactId>
+				<version>2.3.2</version>
+				<configuration>
+					<generateApplicationXml>false</generateApplicationXml>
+					<defaultLibBundleDir>lib</defaultLibBundleDir>
+					<modules>
+						<ejbModule>
+							<groupId>de.mortensenit</groupId>
+							<artifactId>memphis-ejb</artifactId>
+						</ejbModule>
+						<webModule>
+							<groupId>de.mortensenit</groupId>
+							<artifactId>memphis-web</artifactId>
+						</webModule>
+						<jarModule>
+							<groupId>de.mortensenit</groupId>
+							<artifactId>memphis-utils</artifactId>
+							<excluded>false</excluded>
+						</jarModule>
+					</modules>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+
+</project>
